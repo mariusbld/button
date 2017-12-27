@@ -6,9 +6,9 @@ import(
 )
 
 type Transfer struct {
-  ID 				uint 	  `json:"id"`
-  UserID    uint    `json:"user_id"`
-  Amount 		int 		`json:"amount"`
+  ID     uint `json:"id"`
+  UserID uint `json:"user_id"`
+  Amount int  `json:"amount"`
 }
 
 func ListTransfers(w http.ResponseWriter, r *http.Request) {
