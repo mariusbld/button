@@ -22,6 +22,7 @@ User:
 {
   "id":20,
   "email":"jcarter@gmail.com",
+  "first_name":"Jean"
   "last_name":"Carter",
   "points":100
 }
