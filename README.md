@@ -58,7 +58,7 @@ GET /users/{id}/transfers
 Create a new transfer
 >- If the user is not found will return **404**
 >- If there are not enough points, will return **402**
-```
+```http
 POST /users/{id}/transfers
 ```
 
