@@ -10,17 +10,17 @@ import(
 )
 
 type User struct {
-	ID 				uint 	  `json:"id"`
-	Email 		string 	`json:"email"`
-	FirstName string 	`json:"first_name"`
-	LastName 	string 	`json:"last_name"`
-	Points 		int 		`json:"points"`
+  ID 				uint 	  `json:"id"`
+  Email 		string 	`json:"email"`
+  FirstName string 	`json:"first_name"`
+  LastName 	string 	`json:"last_name"`
+  Points 		int 		`json:"points"`
 }
 
 func ListUsers(w http.ResponseWriter, r *http.Request) {
-	var users []User
-	server.db.Find(&users)
-	writeJsonResponse(w, users)
+  var users []User
+  server.db.Find(&users)
+  writeJsonResponse(w, users)
 }
 
 func GetUser(w http.ResponseWriter, r *http.Request) {
@@ -28,21 +28,21 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
   if user == nil {
     return
   }
-	writeJsonResponse(w, *user)
+  writeJsonResponse(w, *user)
 }
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	var user User
-	err := json.NewDecoder(r.Body).Decode(&user)
-	if err != nil {
-		reportHttpError(w, err)
-		return
-	}
-	if err = server.db.Create(&user).Error; err != nil {
+  var user User
+  err := json.NewDecoder(r.Body).Decode(&user)
+  if err != nil {
+  reportHttpError(w, err)
+  return
+  }
+  if err = server.db.Create(&user).Error; err != nil {
     reportHttpError(w, err)
     return
   }
-	writeJsonResponse(w, user)
+  writeJsonResponse(w, user)
 }
 
 func FindUserFromRequest(db *gorm.DB, w http.ResponseWriter, r *http.Request) *User {

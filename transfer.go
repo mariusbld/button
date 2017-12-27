@@ -6,9 +6,9 @@ import(
 )
 
 type Transfer struct {
-	ID 				uint 	  `json:"id"`
+  ID 				uint 	  `json:"id"`
   UserID    uint    `json:"user_id"`
-	Amount 		int 		`json:"amount"`
+  Amount 		int 		`json:"amount"`
 }
 
 func ListTransfers(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +23,7 @@ func ListTransfers(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-	writeJsonResponse(w, transfers)
+  writeJsonResponse(w, transfers)
 }
 
 func CreateTransfer(w http.ResponseWriter, r *http.Request) {
@@ -35,12 +35,12 @@ func CreateTransfer(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-	var transfer Transfer
-	err := json.NewDecoder(r.Body).Decode(&transfer)
-	if err != nil {
-		reportHttpError(w, err)
-		return
-	}
+  var transfer Transfer
+  err := json.NewDecoder(r.Body).Decode(&transfer)
+  if err != nil {
+  reportHttpError(w, err)
+  return
+  }
 
   if user.ID != transfer.UserID {
     http.Error(w, "user id mismatch", http.StatusBadRequest)
@@ -58,5 +58,5 @@ func CreateTransfer(w http.ResponseWriter, r *http.Request) {
   tx.Save(&user)
 
   tx.Commit()
-	writeJsonResponse(w, transfer)
+  writeJsonResponse(w, transfer)
 }
